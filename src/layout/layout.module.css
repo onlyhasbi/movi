@@ -1,0 +1,28 @@
+.header {
+  background: #0ea5e9;
+  display: flex;
+  align-items: center;
+  height: 100px;
+}
+
+.header_title {
+  font-size: 4.8rem;
+  font-family: "Poppins", "sans-serif";
+  font-weight: 900;
+  line-height: 7.2rem;
+  letter-spacing: 0.5em;
+  color: #fff;
+}
+
+.header_menu {
+  display: flex;
+  gap: 5rem;
+}
+
+.header_menu__item {
+  color: #fff;
+  font-family: Roboto;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 2.3rem;
+}
