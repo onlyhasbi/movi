@@ -5,6 +5,7 @@ import FavoritePage from "../pages/favorite.pages";
 import HomePage from "../pages/home.pages";
 import NotFoundPage from "../pages/notfound.pages";
 import WatchlistPage from "../pages/watchlist.pages";
+import DetailPage from "../pages/detail.pages";
 
 export const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ export const router = createBrowserRouter([
       {
         path: "movies",
         element: <HomePage />,
+      },
+      {
+        path: "movies/:movieId",
+        element: <DetailPage />,
       },
       {
         path: "favorite",

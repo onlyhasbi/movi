@@ -1,0 +1,49 @@
+.title_lg {
+  font-size: 4.8rem;
+  font-weight: 600;
+  line-height: 7.2rem;
+}
+
+.title_md {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 3rem;
+  margin-bottom: 3rem;
+}
+
+.movie_label {
+  color: #fff;
+  text-decoration: none !important;
+}
+
+.draggable_movie__list {
+  display: flex;
+  gap: 2.8rem;
+  overflow-x: scroll;
+  padding-top: 0.8rem;
+  padding-bottom: 1.59rem;
+}
+
+.draggable_movie__list::-webkit-scrollbar {
+  appearance: none;
+  width: 1.5rem;
+  height: 0.8rem;
+}
+
+.draggable_movie__list::-webkit-scrollbar-thumb {
+  position: absolute;
+  background: #d9d9d9;
+  border-radius: 2.5rem;
+}
+
+.movie_grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 2.8rem;
+}
+
+.movie_list {
+  display: flex;
+  gap: 2.8rem;
+  padding-top: 0.8rem;
+}

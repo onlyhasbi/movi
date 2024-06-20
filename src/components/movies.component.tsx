@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./movie.module.css";
+import styles from "./movies.module.css";
 import Card from "./card.component";
 
 type Props = {
@@ -8,6 +8,7 @@ type Props = {
   style?: React.CSSProperties;
   rows?: number;
   draggable?: boolean;
+  className?: string;
 };
 
 const titleStyle = {
@@ -21,6 +22,7 @@ const Movie = ({
   draggable = false,
   rows = 1,
   style,
+  className
 }: Props) => {
   const containerRef = React.useRef<HTMLDivElement>(null);
 
@@ -129,7 +131,7 @@ const Movie = ({
   );
 
   return (
-    <div style={style}>
+    <div style={style} className={className}>
       <h3 className={`${styles.movie_label} ${titleStyle[fontSize]}`}>
         {title}
       </h3>

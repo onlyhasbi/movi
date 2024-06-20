@@ -28,9 +28,7 @@ const Layout = () => {
   return (
     <>
       <Header />
-      <div className="container">
-        <Outlet />
-      </div>
+      <Outlet />
     </>
   );
 };

@@ -1,4 +1,4 @@
-import Movie from "../components/movie.component";
+import Movie from "../components/movies.component";
 import { Content } from "../layout/content.layout";
 
 const FavoritePage = () => {
