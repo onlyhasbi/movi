@@ -7,18 +7,22 @@ import {
 import Loading from "../assets/loading.svg?react";
 import Header from "./header.layout";
 import styles from "./layout.module.css";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
+import Modal from "../components/modal.component";
+import { AuthContext } from "../context/auth.context";
+import useSession from "../hooks/useSession";
 
 const Layout = () => {
+  const { authModal, setAuthModal } = useContext(AuthContext);
   const isLoading = useNavigation().state == "loading";
-
   const navigate = useNavigate();
+  const { isAuthenticated } = useSession();
 
   useEffect(() => {
-    if (window.location.pathname === "/") {
+    if (window.location.pathname === "/" || !isAuthenticated) {
       navigate("/movies");
     }
-  }, [navigate]);
+  }, [navigate, isAuthenticated]);
 
   if (isLoading) {
     return (
@@ -34,6 +38,7 @@ const Layout = () => {
     <>
       <Header />
       <Outlet />
+      <Modal isOpen={authModal} onClose={() => setAuthModal(false)} />
       <ScrollRestoration />
     </>
   );
