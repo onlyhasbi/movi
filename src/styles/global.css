@@ -62,3 +62,9 @@ a {
   justify-content: center;
   align-items: center;
 }
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

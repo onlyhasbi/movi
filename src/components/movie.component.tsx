@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./movie.module.css";
+import Card from "./card.component";
 
 type Props = {
   fontSize: "lg" | "md";
@@ -109,10 +110,7 @@ const Movie = ({
 
   const renderMovies = (count: number) =>
     Array.from({ length: count }, (_, index) => (
-      <div className={styles.movie_card} key={index}>
-        <div className={`absolute_center ${styles.card_item}`}>{index+1}</div>
-        <span className={styles.footer_card}></span>
-      </div>
+      <Card index={index} key={index} />
     ));
 
   const content = draggable ? (
