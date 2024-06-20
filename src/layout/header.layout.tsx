@@ -11,7 +11,7 @@ const Header = () => {
   return (
     <div className={styles.header}>
       <div className="container between">
-        <Link className={styles.header_title} to="/">
+        <Link className={styles.header_title} to="/movies">
           CINEMA
         </Link>
         <div className={styles.header_menu}>

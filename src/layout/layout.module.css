@@ -1,5 +1,5 @@
 .header {
-  background: #0ea5e9;
+  background: #e11d48;
   display: flex;
   align-items: center;
   height: 100px;
@@ -8,9 +8,9 @@
 .header_title {
   font-size: 4.8rem;
   font-family: "Poppins", "sans-serif";
-  font-weight: 900;
+  font-weight: 700;
   line-height: 7.2rem;
-  letter-spacing: 0.5em;
+  letter-spacing: 0.2em;
   color: #fff;
 }
 
@@ -22,7 +22,23 @@
 .header_menu__item {
   color: #fff;
   font-family: Roboto;
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 400;
   line-height: 2.3rem;
+}
+
+.loading {
+  display: block;
+  width: 5rem;
+  height: 5rem;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

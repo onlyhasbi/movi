@@ -107,6 +107,14 @@ const Movie = ({
     ele.style.removeProperty("user-select");
   };
 
+  const renderMovies = (count: number) =>
+    Array.from({ length: count }, (_, index) => (
+      <div className={styles.movie_card} key={index}>
+        <div className={`absolute_center ${styles.card_item}`}>{index+1}</div>
+        <span className={styles.footer_card}></span>
+      </div>
+    ));
+
   const content = draggable ? (
     <div
       className={styles.draggable_movie__list}
@@ -114,25 +122,11 @@ const Movie = ({
       onMouseDown={handleMouseDown}
       onTouchStart={handleTouchStart}
     >
-      {Array.from({ length: 60 }, (_, index) => {
-        return (
-          <div className={styles.movie_card} key={index}>
-            {index}
-            <span className={styles.footer_card}></span>
-          </div>
-        );
-      })}
+      {renderMovies(60)}
     </div>
   ) : (
-    <div className={rows == 1 ? styles.movie_list : styles.movie_grid}>
-      {Array.from({ length: 12 }, (_, index) => {
-        return (
-          <div className={styles.movie_card} key={index}>
-            {index}
-            <span className={styles.footer_card}></span>
-          </div>
-        );
-      })}
+    <div className={rows === 1 ? styles.movie_list : styles.movie_grid}>
+      {renderMovies(12)}
     </div>
   );
 

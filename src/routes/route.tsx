@@ -1,25 +1,32 @@
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "../layout";
-import Favorite from "../pages/favorite";
-import Watchlist from "../pages/watchlist";
-import Home from "../pages/home";
+import ErrorPage from "../pages/error.pages";
+import FavoritePage from "../pages/favorite.pages";
+import HomePage from "../pages/home.pages";
+import NotFoundPage from "../pages/notfound.pages";
+import WatchlistPage from "../pages/watchlist.pages";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
+    errorElement: <ErrorPage />,
     children: [
       {
-        index: true,
-        element: <Home />,
+        path: "movies",
+        element: <HomePage />,
       },
       {
         path: "favorite",
-        element: <Favorite />,
+        element: <FavoritePage />,
       },
       {
         path: "watchlist",
-        element: <Watchlist />,
+        element: <WatchlistPage />,
+      },
+      {
+        path: "*",
+        element: <NotFoundPage />,
       },
     ],
   },

@@ -1,7 +1,7 @@
 import Movie from "../components/movie.component";
 import { Content } from "../layout/content.layout";
 
-const Watchlist = () => {
+const WatchlistPage = () => {
   return (
     <Content>
       <Movie
@@ -14,4 +14,4 @@ const Watchlist = () => {
   );
 };
 
-export default Watchlist;
+export default WatchlistPage;

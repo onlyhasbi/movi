@@ -1,12 +1,13 @@
 import Movie from "../components/movie.component";
 import { Content } from "../layout/content.layout";
 
-const Favorite = () => {
+const HomePage = () => {
   return (
     <Content>
+      <Movie title="Now Playing" fontSize="lg" draggable />
       <Movie
-        title="Your Favorite Movies"
-        style={{ display: "flex", flexDirection: "column", gap: "3rem" }}
+        title="Top Rated"
+        style={{ marginTop: "5rem" }}
         fontSize="lg"
         rows={2}
       />
@@ -14,4 +15,4 @@ const Favorite = () => {
   );
 };
 
-export default Favorite;
+export default HomePage;

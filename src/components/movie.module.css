@@ -23,6 +23,19 @@
   overflow-x: scroll;
   padding-top: 0.8rem;
   padding-bottom: 1.59rem;
+
+}
+
+.draggable_movie__list::-webkit-scrollbar {
+  appearance: none;
+  width: 1.5rem;
+  height: 0.8rem;
+}
+
+.draggable_movie__list::-webkit-scrollbar-thumb {
+  position: absolute;
+  background: #d9d9d9;
+  border-radius: 2.5rem;
 }
 
 .movie_grid {
@@ -38,10 +51,16 @@
 }
 
 .movie_card {
+  position: relative;
   min-width: 19.3rem;
   height: 35.5rem;
   border-radius: 0.6rem;
-  background-color: aquamarine;
+  background-color: #374151;
+}
+
+.card_item {
+  font-size: 3rem;
+  font-weight: 600;
 }
 
 .footer_card {
