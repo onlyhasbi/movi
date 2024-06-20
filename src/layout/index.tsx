@@ -1,4 +1,9 @@
-import { Outlet, useNavigate, useNavigation } from "react-router-dom";
+import {
+  Outlet,
+  ScrollRestoration,
+  useNavigate,
+  useNavigation,
+} from "react-router-dom";
 import Loading from "../assets/loading.svg?react";
 import Header from "./header.layout";
 import styles from "./layout.module.css";
@@ -29,6 +34,7 @@ const Layout = () => {
     <>
       <Header />
       <Outlet />
+      <ScrollRestoration />
     </>
   );
 };
