@@ -16,7 +16,7 @@
   text-decoration: none !important;
 }
 
-.draggable_movie__list {
+.scrollable_movie__list {
   display: flex;
   gap: 2.8rem;
   overflow-x: scroll;
@@ -24,13 +24,13 @@
   padding-bottom: 1.59rem;
 }
 
-.draggable_movie__list::-webkit-scrollbar {
+.scrollable_movie__list::-webkit-scrollbar {
   appearance: none;
   width: 1.5rem;
   height: 0.8rem;
 }
 
-.draggable_movie__list::-webkit-scrollbar-thumb {
+.scrollable_movie__list::-webkit-scrollbar-thumb {
   position: absolute;
   background: #d9d9d9;
   border-radius: 2.5rem;

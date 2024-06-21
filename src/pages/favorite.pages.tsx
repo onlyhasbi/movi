@@ -5,6 +5,7 @@ const FavoritePage = () => {
   return (
     <Content>
       <Movie
+        data={[]}
         title="Your Favorite Movies"
         style={{ display: "flex", flexDirection: "column", gap: "3rem" }}
         fontSize="lg"

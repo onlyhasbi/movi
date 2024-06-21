@@ -17,18 +17,20 @@ const DetailPage = () => {
     category: ["Drama", "History"],
     duration: "3h 1m",
     description: "The world forever changes.",
-    overview: "The story of J. Robert Oppenheimer's role in the development of the atomic bomb during World War II.",
+    overview:
+      "The story of J. Robert Oppenheimer's role in the development of the atomic bomb during World War II.",
   };
 
   return (
     <>
       <Cover {...payload} />
       <Movie
+        data={[]}
         style={{ marginTop: "5rem", paddingBottom: "5rem" }}
         className="container"
         title="Recommendations"
         fontSize="md"
-        draggable
+        scrollable
       />
     </>
   );

@@ -6,17 +6,24 @@ import FavoritePage from "../pages/favorite.pages";
 import HomePage from "../pages/home.pages";
 import NotFoundPage from "../pages/notfound.pages";
 import WatchlistPage from "../pages/watchlist.pages";
+import { getRequest } from "../services";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: (
-        <Layout />
-    ),
+    element: <Layout />,
     errorElement: <ErrorPage />,
     children: [
       {
         path: "movies",
+        loader: async () => {
+          return {
+            nowPlaying: await getRequest("now_playing").then((res) =>
+              res.json()
+            ),
+            topRated: await getRequest("top_rated").then((res) => res.json()),
+          };
+        },
         element: <HomePage />,
       },
       {

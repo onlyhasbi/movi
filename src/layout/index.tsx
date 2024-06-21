@@ -1,20 +1,12 @@
-import {
-  Outlet,
-  ScrollRestoration,
-  useNavigate,
-  useNavigation,
-} from "react-router-dom";
-import Loading from "../assets/loading.svg?react";
-import Header from "./header.layout";
-import styles from "./layout.module.css";
 import { useContext, useEffect } from "react";
+import { Outlet, ScrollRestoration, useNavigate } from "react-router-dom";
 import Modal from "../components/modal.component";
 import { AuthContext } from "../context/auth.context";
 import useSession from "../hooks/useSession";
+import Header from "./header.layout";
 
 const Layout = () => {
   const { authModal, setAuthModal } = useContext(AuthContext);
-  const isLoading = useNavigation().state == "loading";
   const navigate = useNavigate();
   const { isAuthenticated } = useSession();
 
@@ -23,16 +15,6 @@ const Layout = () => {
       navigate("/movies");
     }
   }, [navigate, isAuthenticated]);
-
-  if (isLoading) {
-    return (
-      <div className="center">
-        <div className={styles.loading}>
-          <Loading />
-        </div>
-      </div>
-    );
-  }
 
   return (
     <>

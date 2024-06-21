@@ -38,6 +38,12 @@
   visibility: visible;
 }
 
+.card_poster {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
 .footer_card {
   display: flex;
   flex-direction: column;

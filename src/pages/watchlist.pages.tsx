@@ -5,6 +5,7 @@ const WatchlistPage = () => {
   return (
     <Content>
       <Movie
+        data={[]}
         title="Your Watchlist"
         style={{ display: "flex", flexDirection: "column", gap: "3rem" }}
         fontSize="lg"
