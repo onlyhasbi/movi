@@ -59,3 +59,5 @@ export type TopRatedResponse = {
 };
 
 export type RecommendationsResponse = TopRatedResponse;
+
+export type MovieStore = Movie;

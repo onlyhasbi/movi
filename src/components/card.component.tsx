@@ -1,15 +1,31 @@
-import styles from "./card.module.css";
-import OutlineWatchlist from "../assets/icons/outline-watchlist.svg?react";
+import { useLocation, useNavigate } from "react-router-dom";
 import OutlineFavorite from "../assets/icons/outline-favorite.svg?react";
-import { useNavigate } from "react-router-dom";
-import { Movie } from "../types";
+import OutlineWatchlist from "../assets/icons/outline-watchlist.svg?react";
+import FilledFavorite from "../assets/icons/filled-favorite.svg?react";
+import FillWatchlist from "../assets/icons/filled-watchlist.svg?react";
 import { getImage } from "../services/service.config";
+import { Movie } from "../types";
 import { getYear } from "../utils/formatDate";
+import { useMovieStore } from "../store";
+import styles from "./card.module.css";
 
 type Props = { movie: Movie };
 
 const Card = ({ movie }: Props) => {
   const navigate = useNavigate();
+  const currentPath = useLocation().pathname;
+
+  const isFavoriteVisible =
+    currentPath == "/movies" || currentPath == "/favorite";
+  const isWatchlistVisible =
+    currentPath == "/movies" || currentPath == "/watchlist";
+
+  const { watchlist, favorites, toggleWatchlist, toggleFavorite } =
+    useMovieStore();
+
+  const findCallback = (w: Movie) => w.id == movie.id;
+  const isWatchlist = Boolean(watchlist.find(findCallback));
+  const isFavorite = Boolean(favorites.find(findCallback));
 
   return (
     <div className={styles.movie_card} key={movie.id}>
@@ -21,11 +37,19 @@ const Card = ({ movie }: Props) => {
           loading="lazy"
         />
         <span className={styles.card_icons}>
-          <span className={styles.icon_watchlist}>
-            <OutlineWatchlist />
+          <span
+            style={{ display: isWatchlistVisible ? "block" : "none" }}
+            onClick={() => toggleWatchlist(movie)}
+            className={styles.icon_watchlist}
+          >
+            {isWatchlist ? <FillWatchlist /> : <OutlineWatchlist />}
           </span>
-          <span className={styles.icon_favorite}>
-            <OutlineFavorite />
+          <span
+            style={{ display: isFavoriteVisible ? "block" : "none" }}
+            onClick={() => toggleFavorite(movie)}
+            className={styles.icon_favorite}
+          >
+            {isFavorite ? <FilledFavorite /> : <OutlineFavorite />}
           </span>
         </span>
       </div>

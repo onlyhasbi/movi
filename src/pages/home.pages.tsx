@@ -31,7 +31,7 @@ const HomePage = () => {
         title="Top Rated"
         style={{ marginTop: "5rem" }}
         fontSize="lg"
-        rows={2}
+        rows
       />
     </Content>
   );

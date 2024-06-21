@@ -8,7 +8,7 @@ type Props = {
   fontSize: "lg" | "md";
   title: string;
   style?: React.CSSProperties;
-  rows?: number;
+  rows?: boolean;
   scrollable?: boolean;
   className?: string;
 };
@@ -23,7 +23,7 @@ const Movie = ({
   fontSize,
   title,
   scrollable = false,
-  rows = 1,
+  rows = false,
   style,
   className,
 }: Props) => {
@@ -33,7 +33,7 @@ const Movie = ({
   const content = scrollable ? (
     <div className={styles.scrollable_movie__list}>{renderMovies(data)}</div>
   ) : (
-    <div className={rows === 1 ? styles.movie_list : styles.movie_grid}>
+    <div className={!rows ? styles.movie_list : styles.movie_grid}>
       {renderMovies(data)}
     </div>
   );
