@@ -9,21 +9,6 @@ import { calculateUserScore } from "../utils/calculateUserScore";
 import { durationFormat, getYear, reformatDate } from "../utils/formatDate";
 import styles from "./cover.module.css";
 
-type Props = Partial<{
-  id: string;
-  photo: string;
-  background: string;
-  title: string;
-  date: string;
-  score: number;
-  watchlist: boolean;
-  favorite: boolean;
-  category: Array<string>;
-  duration: string;
-  description: string;
-  overview: string;
-}>;
-
 function Cover(props: MovieDetail) {
   const userScore = calculateUserScore(props.vote_average, props.vote_count);
 
