@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import useSession from "../hooks/useSession";
 import styles from "./layout.module.css";
+import DoorExit from "../assets/icons/logout.svg?react";
 
 const Header = () => {
   const navigationPath = [
@@ -15,7 +16,12 @@ const Header = () => {
   const currentPath = useLocation().pathname;
   const { setAuthModal } = useContext(AuthContext);
 
-  const { isAuthenticated } = useSession();
+  const { isAuthenticated, removeSession } = useSession();
+
+  const handleLogout = () => {
+    navigate("/movies");
+    removeSession();
+  };
 
   return (
     <>
@@ -27,7 +33,7 @@ const Header = () => {
           <div className={styles.header_menu}>
             {navigationPath.map(({ path, label }) => {
               return (
-                <button
+                <span
                   key={path}
                   className={`${styles.header_menu__item} ${
                     currentPath == path ? "active" : ""
@@ -41,14 +47,33 @@ const Header = () => {
                   }}
                 >
                   {label}
-                </button>
+                </span>
               );
             })}
+            <Logout
+              isAuthenticated={Boolean(isAuthenticated)}
+              onLogout={handleLogout}
+            />
           </div>
         </div>
       </div>
     </>
   );
 };
+
+function Logout({
+  isAuthenticated,
+  onLogout: handleLogout,
+}: {
+  isAuthenticated: boolean;
+  onLogout: () => void;
+}) {
+  if (!isAuthenticated) return null;
+  return (
+    <span className={styles.header_menu__item} onClick={handleLogout}>
+      <DoorExit />
+    </span>
+  );
+}
 
 export default Header;

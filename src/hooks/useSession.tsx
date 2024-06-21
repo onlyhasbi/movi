@@ -15,7 +15,11 @@ const useSession = () => {
     Cookies.set(SESSION, sessionData, { expires });
   };
 
-  return { isAuthenticated, setSession };
+  const removeSession = () => {
+    Cookies.remove(SESSION);
+  };
+
+  return { isAuthenticated, setSession, removeSession };
 };
 
 export default useSession;

@@ -1,9 +1,9 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 import styles from "./modal.module.css";
-import useAuth from "../hooks/useAuth";
+import useFetch from "../hooks/useFetch";
+import { AuthResponse } from "../types/base";
 import useSession from "../hooks/useSession";
-import { AuthContext } from "../context/auth.context";
 
 type Props = {
   isOpen: boolean;
@@ -11,11 +11,21 @@ type Props = {
 };
 
 const Modal = ({ isOpen, onClose }: Props) => {
-  const [authenticate, setIsAuthenticate] = useState(false);
   const modalRef = useRef<HTMLDivElement | null>(null);
-  const { authenticated, isLoading } = useAuth({ enabled: authenticate });
-  const { setAuthModal } = useContext(AuthContext);
   const { setSession } = useSession();
+
+  const { isLoading, fetchData } = useFetch<AuthResponse>({
+    key: "auth",
+    callback: {
+      onSuccess: (data: AuthResponse) => {
+        setSession({
+          sessionData: JSON.stringify(data),
+          expireAt: data.expires_at,
+        });
+        onClose();
+      },
+    },
+  });
 
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
@@ -32,26 +42,13 @@ const Modal = ({ isOpen, onClose }: Props) => {
     };
   }, [onClose]);
 
-  useEffect(() => {
-    if (authenticated?.guest_session_id) {
-      setSession({
-        sessionData: JSON.stringify(authenticated),
-        expireAt: authenticated.expires_at,
-      });
-      setAuthModal(false);
-    }
-  }, [authenticated, setAuthModal, setSession]);
-
   if (!isOpen) return null;
 
   return ReactDOM.createPortal(
     <div className={styles.modal_overlay}>
       <div className={styles.modal_content} ref={modalRef}>
         <img className={styles.logo} src="./tmdb-logo.png" alt="tmdb-logo" />
-        <button
-          onClick={() => setIsAuthenticate(true)}
-          className={styles.login_button}
-        >
+        <button onClick={fetchData} className={styles.login_button}>
           {isLoading ? "Authenticating..." : "Login with TMDB"}
         </button>
       </div>
