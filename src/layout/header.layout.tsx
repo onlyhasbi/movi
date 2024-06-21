@@ -5,6 +5,7 @@ import { AuthContext } from "../context/auth.context";
 import useSession from "../hooks/useSession";
 import styles from "./layout.module.css";
 import DoorExit from "../assets/icons/logout.svg?react";
+import { getRequest } from "../services";
 
 const Header = () => {
   const navigationPath = [
@@ -18,9 +19,17 @@ const Header = () => {
 
   const { isAuthenticated, removeSession } = useSession();
 
+  const removeApiSession = async () =>
+    await getRequest({
+      key: "logout",
+      method: "DELETE",
+      body: JSON.stringify(isAuthenticated),
+    });
+
   const handleLogout = () => {
-    navigate("/movies");
+    removeApiSession();
     removeSession();
+    navigate(0);
   };
 
   return (
@@ -69,6 +78,7 @@ function Logout({
   onLogout: () => void;
 }) {
   if (!isAuthenticated) return null;
+
   return (
     <span className={styles.header_menu__item} onClick={handleLogout}>
       <DoorExit />

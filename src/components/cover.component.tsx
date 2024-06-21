@@ -1,13 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import OutlineFavorite from "../assets/icons/outline-favorite.svg?react";
-import OutlineWatchlist from "../assets/icons/outline-watchlist.svg?react";
 import { getImage } from "../services/service.config";
 import { MovieDetail } from "../types";
 import { calculateUserScore } from "../utils/calculateUserScore";
 import { durationFormat, getYear, reformatDate } from "../utils/formatDate";
 import styles from "./cover.module.css";
+import Toggle from "./toggle.component";
 
 function Cover(props: MovieDetail) {
   const userScore = calculateUserScore(props.vote_average, props.vote_count);
@@ -69,12 +68,14 @@ function Cover(props: MovieDetail) {
               </span>
               <span className={styles.circular_text}>User score</span>
             </div>
-            <span className={styles.icon_watchlist}>
-              <OutlineWatchlist />
-            </span>
-            <span className={styles.icon_favorite}>
-              <OutlineFavorite />
-            </span>
+            <Toggle
+              movie={{
+                id: props.id,
+                poster_path: props.poster_path,
+                release_date: props.release_date,
+                title: props.title,
+              }}
+            />
           </div>
           <p className={styles.cover_description}>{props.tagline}</p>
           <div className={styles.cover_overview}>

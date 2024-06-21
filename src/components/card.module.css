@@ -69,8 +69,10 @@
 
 .icon_watchlist {
   width: 1rem;
+  cursor: pointer;
 }
 
 .icon_favorite {
   width: 1.6rem;
+  cursor: pointer;
 }

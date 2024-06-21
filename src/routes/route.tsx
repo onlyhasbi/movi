@@ -18,10 +18,12 @@ export const router = createBrowserRouter([
         path: "movies",
         loader: async () => {
           return {
-            nowPlaying: await getRequest("now_playing").then((res) =>
+            nowPlaying: await getRequest({ key: "now_playing" }).then((res) =>
               res.json()
             ),
-            topRated: await getRequest("top_rated").then((res) => res.json()),
+            topRated: await getRequest({ key: "top_rated" }).then((res) =>
+              res.json()
+            ),
           };
         },
         element: <HomePage />,
@@ -30,13 +32,14 @@ export const router = createBrowserRouter([
         path: "movies/:movieId",
         loader: async ({ params }) => {
           return {
-            recommendations: await getRequest(
-              "recommendations",
-              params.movieId
-            ).then((res) => res.json()),
-            movie: await getRequest("detail", params.movieId).then((res) =>
-              res.json()
-            ),
+            recommendations: await getRequest({
+              key: "recommendations",
+              id_params: params.movieId,
+            }).then((res) => res.json()),
+            movie: await getRequest({
+              key: "detail",
+              id_params: params.movieId,
+            }).then((res) => res.json()),
           };
         },
         element: <DetailPage />,
