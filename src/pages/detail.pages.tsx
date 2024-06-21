@@ -10,9 +10,7 @@ type DetailLoaderResponse = {
 
 const DetailPage = () => {
   const { movie, recommendations } = useLoaderData() as DetailLoaderResponse;
-
-  console.log({ movie, recommendations });
-
+  
   return (
     <>
       <Cover {...movie}/>
