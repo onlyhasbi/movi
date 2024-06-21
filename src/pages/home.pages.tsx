@@ -6,8 +6,6 @@ import {
   NowPlayingResponse,
   TopRatedResponse,
 } from "../types";
-import { Suspense } from "react";
-import Loading from "../layout/loading.layout";
 
 type HomeLoaderResponse = {
   nowPlaying: NowPlayingResponse;
@@ -21,23 +19,21 @@ const HomePage = () => {
     data.slice(0, limitCount);
 
   return (
-    <Suspense fallback={<Loading />}>
-      <Content>
-        <Movie
-          data={nowPlaying?.results || []}
-          title="Now Playing"
-          fontSize="lg"
-          scrollable
-        />
-        <Movie
-          data={limit(12, topRated?.results) || []}
-          title="Top Rated"
-          style={{ marginTop: "5rem" }}
-          fontSize="lg"
-          rows={2}
-        />
-      </Content>
-    </Suspense>
+    <Content>
+      <Movie
+        data={nowPlaying?.results || []}
+        title="Now Playing"
+        fontSize="lg"
+        scrollable
+      />
+      <Movie
+        data={limit(12, topRated?.results) || []}
+        title="Top Rated"
+        style={{ marginTop: "5rem" }}
+        fontSize="lg"
+        rows={2}
+      />
+    </Content>
   );
 };
 
