@@ -11,31 +11,14 @@ import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 
 const Toggle = ({ movie }: { movie: Movie }) => {
+  const currentPath = useLocation().pathname;
   const { isAuthenticated } = useSession();
   const { setAuthModal } = useContext(AuthContext);
-  const currentPath = useLocation().pathname;
   const { watchlist, favorites, toggleWatchlist, toggleFavorite } =
     useMovieStore();
 
-  const isPathVisible = (
-    currentPath: string,
-    staticPaths: string[],
-    dynamicPattern: RegExp
-  ) => staticPaths.includes(currentPath) || dynamicPattern.test(currentPath);
-
-  const commonDynamicPattern = /^\/movies\/[0-9]+$/;
-
-  const isFavoriteVisible = isPathVisible(
-    currentPath,
-    ["/movies", "/favorite"],
-    commonDynamicPattern
-  );
-
-  const isWatchlistVisible = isPathVisible(
-    currentPath,
-    ["/movies", "/watchlist"],
-    commonDynamicPattern
-  );
+  const isFavoriteVisible = !(currentPath == "/watchlist");
+  const isWatchlistVisible = !(currentPath == "/favorite");
 
   const findCallback = (w: Movie) => w.id == movie.id;
   const isWatchlist = Boolean(watchlist.find(findCallback));
