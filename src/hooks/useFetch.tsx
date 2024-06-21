@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
-import { getRequest } from "../services/base.service";
-import { Endpoint, UseFetchResult } from "../types/base";
+import { getRequest } from "../services";
+import { Endpoint, UseFetchResult } from "../types";
 
 type Props<T> = {
   key: Endpoint | "recommendations";

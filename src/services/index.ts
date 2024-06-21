@@ -1,4 +1,4 @@
-import { Endpoint } from "../types/base";
+import { Endpoint } from "../types";
 import { getUrl, headers } from "./service.config";
 
 /**
@@ -10,9 +10,9 @@ import { getUrl, headers } from "./service.config";
  */
 
 const endpoint = {
-  auth: "/3/authentication/guest_session/new",
-  now_playing: "3/movie/now_playing?language=en-US&page=1",
-  top_rated: "3/movie/top_rated?language=en-US&page=1",
+  auth: "/authentication/guest_session/new",
+  now_playing: "/movie/now_playing?language=en-US&page=1",
+  top_rated: "/movie/top_rated?language=en-US&page=1",
 };
 
 export const getRequest = async (
@@ -22,7 +22,7 @@ export const getRequest = async (
   let url = "";
 
   if (key == "recommendations" && series_id) {
-    url = `https://api.themoviedb.org/3/tv/${series_id}/recommendations`;
+    url = getUrl(`/tv/${series_id}/recommendations`);
   } else {
     url = getUrl(endpoint[key as Endpoint]);
   }
