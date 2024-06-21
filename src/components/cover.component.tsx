@@ -1,10 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import {
-  CircularProgressbar
-} from "react-circular-progressbar";
+import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import OutlineFavorite from "../assets/icons/outline-favorite.svg?react";
 import OutlineWatchlist from "../assets/icons/outline-watchlist.svg?react";
+import { getImage } from "../services/service.config";
+import { MovieDetail } from "../types";
+import { calculateUserScore } from "../utils/calculateUserScore";
+import { durationFormat, getYear, reformatDate } from "../utils/formatDate";
 import styles from "./cover.module.css";
 
 type Props = Partial<{
@@ -22,33 +24,42 @@ type Props = Partial<{
   overview: string;
 }>;
 
-function Cover(props: Props) {
-  const year = new Date(props?.date ?? Date.now()).getFullYear();
+function Cover(props: MovieDetail) {
+  const userScore = calculateUserScore(props.vote_average, props.vote_count);
 
   return (
-    <div className={styles.cover_container}>
+    <div
+      style={{ backgroundImage: `url(${getImage(props.backdrop_path)})` }}
+      className={styles.cover_container}
+    >
       <div className={`container ${styles.cover_items}`}>
-        <div className={styles.cover_photo}>{props.photo ?? "Photo"}</div>
+        <img
+          className={styles.cover_photo}
+          src={getImage(props.poster_path)}
+          alt={`image-${props.id}`}
+        />
         <div className={styles.cover_info}>
           <h3 className={styles.cover_title}>
             {props.title}
-            <span className={styles.cover_title__date}>({year})</span>
+            <span className={styles.cover_title__date}>
+              ({getYear(props.release_date)})
+            </span>
           </h3>
           <ul className={styles.cover_movie__info}>
-            <li>{props.date}</li>
+            <li>{reformatDate(props.release_date)}</li>
             <li>
-              {props.category?.length == 1
-                ? props.category[0]
-                : props.category?.join(", ")}
+              {props.genres?.length == 1
+                ? props.genres[0].name
+                : props.genres?.map(({ name }) => name).join(", ")}
             </li>
-            <li>{props.duration}</li>
+            <li>{durationFormat(props.runtime)}</li>
           </ul>
           <div className={styles.cover_user__info}>
             <div className={styles.circular_container}>
               <span className={styles.circular_info}>
                 <CircularProgressbar
-                  value={props.score!}
-                  text={props.score!.toString()}
+                  value={userScore}
+                  text={userScore.toString()}
                   background
                   backgroundPadding={10}
                   styles={{
@@ -79,7 +90,7 @@ function Cover(props: Props) {
               <OutlineFavorite />
             </span>
           </div>
-          <p className={styles.cover_description}>{props.description}</p>
+          <p className={styles.cover_description}>{props.tagline}</p>
           <div className={styles.cover_overview}>
             <h4>Overview</h4>
             <p>{props.overview}</p>

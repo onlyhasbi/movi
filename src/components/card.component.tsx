@@ -4,6 +4,7 @@ import OutlineFavorite from "../assets/icons/outline-favorite.svg?react";
 import { useNavigate } from "react-router-dom";
 import { Movie } from "../types";
 import { getImage } from "../services/service.config";
+import { getYear } from "../utils/formatDate";
 
 type Props = { movie: Movie };
 
@@ -36,7 +37,7 @@ const Card = ({ movie }: Props) => {
           {movie.title}
         </h3>
         <p className={styles.footer_card__year}>
-          {new Date(movie.release_date).getFullYear()}
+          {getYear(movie.release_date)}
         </p>
       </span>
     </div>

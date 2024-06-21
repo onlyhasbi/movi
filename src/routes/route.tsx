@@ -28,6 +28,17 @@ export const router = createBrowserRouter([
       },
       {
         path: "movies/:movieId",
+        loader: async ({ params }) => {
+          return {
+            recommendations: await getRequest(
+              "recommendations",
+              params.movieId
+            ).then((res) => res.json()),
+            movie: await getRequest("detail", params.movieId).then((res) =>
+              res.json()
+            ),
+          };
+        },
         element: <DetailPage />,
       },
       {

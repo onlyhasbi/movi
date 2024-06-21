@@ -1,31 +1,23 @@
-import { useParams } from "react-router-dom";
-import Cover from "../components/cover.component";
 import Movie from "../components/movies.component";
+import Cover from "../components/cover.component";
+import { useLoaderData } from "react-router-dom";
+import { MovieDetail, RecommendationsResponse } from "../types";
+
+type DetailLoaderResponse = {
+  movie: MovieDetail;
+  recommendations: RecommendationsResponse;
+};
 
 const DetailPage = () => {
-  const { movieId } = useParams();
+  const { movie, recommendations } = useLoaderData() as DetailLoaderResponse;
 
-  const payload = {
-    id: movieId,
-    photo: "",
-    background: "",
-    title: "Oppenheimer",
-    date: "07/19/2023",
-    score: 82,
-    watchlist: false,
-    favorite: true,
-    category: ["Drama", "History"],
-    duration: "3h 1m",
-    description: "The world forever changes.",
-    overview:
-      "The story of J. Robert Oppenheimer's role in the development of the atomic bomb during World War II.",
-  };
+  console.log({ movie, recommendations });
 
   return (
     <>
-      <Cover {...payload} />
+      <Cover {...movie}/>
       <Movie
-        data={[]}
+        data={recommendations?.results || []}
         style={{ marginTop: "5rem", paddingBottom: "5rem" }}
         className="container"
         title="Recommendations"

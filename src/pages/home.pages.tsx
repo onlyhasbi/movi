@@ -15,7 +15,7 @@ type HomeLoaderResponse = {
 };
 
 const HomePage = () => {
-  const data = useLoaderData() as HomeLoaderResponse;
+  const { nowPlaying, topRated } = useLoaderData() as HomeLoaderResponse;
 
   const limit = (limitCount: number, data: Array<MovieType>) =>
     data.slice(0, limitCount);
@@ -24,13 +24,13 @@ const HomePage = () => {
     <Suspense fallback={<Loading />}>
       <Content>
         <Movie
-          data={data?.nowPlaying.results || []}
+          data={nowPlaying?.results || []}
           title="Now Playing"
           fontSize="lg"
           scrollable
         />
         <Movie
-          data={limit(12, data?.topRated.results) || []}
+          data={limit(12, topRated?.results) || []}
           title="Top Rated"
           style={{ marginTop: "5rem" }}
           fontSize="lg"
