@@ -4,6 +4,7 @@ import styles from "./modal.module.css";
 import useFetch from "../hooks/useFetch";
 import { AuthResponse } from "../types";
 import useSession from "../hooks/useSession";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
   isOpen: boolean;
@@ -12,6 +13,7 @@ type Props = {
 
 const Modal = ({ isOpen, onClose }: Props) => {
   const modalRef = useRef<HTMLDivElement | null>(null);
+  const navigate = useNavigate();
   const { setSession } = useSession();
 
   const { isLoading, fetchData } = useFetch<AuthResponse>({
@@ -22,6 +24,7 @@ const Modal = ({ isOpen, onClose }: Props) => {
           sessionData: JSON.stringify(data),
           expireAt: data.expires_at,
         });
+        navigate(0);
         onClose();
       },
     },
@@ -47,7 +50,12 @@ const Modal = ({ isOpen, onClose }: Props) => {
   return ReactDOM.createPortal(
     <div className={styles.modal_overlay}>
       <div className={styles.modal_content} ref={modalRef}>
-        <img className={styles.logo} src="./tmdb-logo.png" alt="tmdb-logo" loading="lazy"/>
+        <img
+          className={styles.logo}
+          src="./tmdb-logo.png"
+          alt="tmdb-logo"
+          loading="lazy"
+        />
         <button onClick={fetchData} className={styles.login_button}>
           {isLoading ? "Authenticating..." : "Login with TMDB"}
         </button>
