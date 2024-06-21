@@ -7,9 +7,12 @@ import { useLocation } from "react-router-dom";
 import { useMovieStore } from "../store";
 import { Movie } from "../types";
 import styles from "./card.module.css";
+import { useContext } from "react";
+import { AuthContext } from "../context/auth.context";
 
 const Toggle = ({ movie }: { movie: Movie }) => {
   const { isAuthenticated } = useSession();
+  const { setAuthModal } = useContext(AuthContext);
   const currentPath = useLocation().pathname;
   const { watchlist, favorites, toggleWatchlist, toggleFavorite } =
     useMovieStore();
@@ -42,7 +45,9 @@ const Toggle = ({ movie }: { movie: Movie }) => {
     <>
       <span
         style={{ display: isWatchlistVisible ? "block" : "none" }}
-        onClick={() => isAuthenticated && toggleWatchlist(movie)}
+        onClick={() =>
+          isAuthenticated ? toggleWatchlist(movie) : setAuthModal(true)
+        }
         className={styles.icon_watchlist}
       >
         {isWatchlist && isAuthenticated ? (
@@ -53,7 +58,9 @@ const Toggle = ({ movie }: { movie: Movie }) => {
       </span>
       <span
         style={{ display: isFavoriteVisible ? "block" : "none" }}
-        onClick={() => isAuthenticated && toggleFavorite(movie)}
+        onClick={() =>
+          isAuthenticated ? toggleFavorite(movie) : setAuthModal(true)
+        }
         className={styles.icon_favorite}
       >
         {isFavorite && isAuthenticated ? (
