@@ -18,6 +18,7 @@ const Card = ({ movie }: Props) => {
           className={styles.card_poster}
           src={getImage(movie.poster_path)}
           alt={`image-${movie.id}`}
+          loading="lazy"
         />
         <span className={styles.card_icons}>
           <span className={styles.icon_watchlist}>

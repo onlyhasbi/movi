@@ -21,6 +21,7 @@ function Cover(props: MovieDetail) {
         <img
           className={styles.cover_photo}
           src={getImage(props.poster_path)}
+          loading="lazy"
           alt={`image-${props.id}`}
         />
         <div className={styles.cover_info}>
