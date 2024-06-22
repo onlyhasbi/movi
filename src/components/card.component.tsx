@@ -1,4 +1,5 @@
 import Toggle from "./toggle.component";
+import ImageOff from "../assets/icons/image-off.svg?react";
 import { useNavigate, useNavigation } from "react-router-dom";
 import { getImage } from "../services/service.config";
 import { Movie } from "../types";
@@ -14,13 +15,20 @@ const Card = ({ movie }: Props) => {
   return (
     <div className={styles.movie_card} key={movie.id}>
       <div className={`${styles.card_item} ${isLoading ? "pulse" : ""}`}>
-        <img
-          style={{ display: isLoading ? "hidden" : "block" }}
-          className={styles.card_poster}
-          src={getImage(movie.poster_path)}
-          alt={`image-${movie.id}`}
-          loading="lazy"
-        />
+        {movie?.poster_path ? (
+          <img
+            style={{ display: isLoading ? "hidden" : "block" }}
+            className={styles.card_poster}
+            src={getImage(movie.poster_path)}
+            alt={`image-${movie.id}`}
+            loading="lazy"
+          />
+        ) : (
+          <div className={styles.card_noimage}>
+            <ImageOff style={{ width: "5rem", height: "5rem" }} />
+            <p>No Image</p>
+          </div>
+        )}
         <span className={styles.card_icons}>
           <Toggle movie={movie} />
         </span>

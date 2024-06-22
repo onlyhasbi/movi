@@ -4,11 +4,7 @@ import useSession from "../hooks/useSession";
 import Search from "../components/search.component";
 import styles from "./layout.module.css";
 import { useContext } from "react";
-import {
-  Link,
-  useLocation,
-  useNavigate
-} from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import { getRequest } from "../services";
 
@@ -45,7 +41,7 @@ const Header = () => {
             <Link className={styles.header_title} to="/movies">
               CINEMA
             </Link>
-            <Search style={{ display: isHomePage ? "block" : "none" }} />
+            <Search isVisible={isHomePage} />
           </div>
           <div className={styles.header_menu}>
             {navigationPath.map(({ path, label }) => {

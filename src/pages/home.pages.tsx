@@ -10,6 +10,7 @@ import {
   TopRatedResponse,
 } from "../types";
 import { useEffect } from "react";
+import Empty from "../components/empty.component";
 
 type HomeLoaderResponse = {
   nowPlaying: NowPlayingResponse;
@@ -40,21 +41,25 @@ const HomePage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search]);
 
+  if (isLoading) {
+    return (
+      <div
+        style={{
+          width: "100%",
+          marginTop: "30rem",
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        <Loading />
+      </div>
+    );
+  }
+
   if (search && searchData) {
     return (
       <Content>
-        {isLoading ? (
-          <div
-            style={{
-              width: "100%",
-              marginTop: "20rem",
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
-            <Loading />
-          </div>
-        ) : (
+        {searchData.results.length > 0 ? (
           <Movie
             data={limit(18, searchData?.results || [])}
             title=""
@@ -62,6 +67,10 @@ const HomePage = () => {
             fontSize="lg"
             rows
           />
+        ) : (
+          <div>
+            <Empty variant="notfound" />
+          </div>
         )}
       </Content>
     );

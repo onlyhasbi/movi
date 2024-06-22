@@ -1,4 +1,5 @@
-export const getYear = (date: string) => new Date(date).getFullYear();
+export const getYear = (date: string) =>
+  date ? new Date(date).getFullYear() : new Date().getFullYear();
 
 export const reformatDate = (date: string) => {
   const [year, month, day] = date.split("-");

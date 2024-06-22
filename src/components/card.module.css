@@ -45,6 +45,14 @@
   min-height: 28.9rem;
 }
 
+.card_noimage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
 .footer_card {
   display: flex;
   flex-direction: column;
