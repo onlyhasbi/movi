@@ -1,7 +1,7 @@
 import React from "react";
-import { Movie as MovieType } from "../types";
 import Card from "./card.component";
 import styles from "./movies.module.css";
+import { Movie as MovieType } from "../types";
 
 type Props = {
   data: Array<MovieType>;

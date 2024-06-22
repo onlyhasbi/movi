@@ -1,17 +1,21 @@
 import { useCallback, useState } from "react";
-import { getRequest } from "../services";
-import { Endpoint, UseFetchResult } from "../types";
+import { getRequest, type Endpoint } from "../services";
+import { UseFetchResult } from "../types";
 
 type Props<T> = {
-  key: Endpoint | "recommendations";
-  movie_id?: string;
+  key: Endpoint;
+  id_params?: string;
   callback?: {
     onSuccess?: (data: T) => void;
     onError?: (err: string) => void;
   };
 };
 
-function useFetch<T>({ key, movie_id, callback }: Props<T>): UseFetchResult<T> {
+function useFetch<T>({
+  key,
+  id_params,
+  callback,
+}: Props<T>): UseFetchResult<T> {
   const [data, setData] = useState<T | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
@@ -20,7 +24,7 @@ function useFetch<T>({ key, movie_id, callback }: Props<T>): UseFetchResult<T> {
     setIsLoading(true);
     setError(null);
 
-    getRequest({ key, id_params: movie_id })
+    getRequest({ key, id_params: id_params })
       .then((response) => response.json())
       .then((data) => {
         callback?.onSuccess?.(data);
@@ -33,7 +37,7 @@ function useFetch<T>({ key, movie_id, callback }: Props<T>): UseFetchResult<T> {
         setIsLoading(false);
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [key, movie_id]);
+  }, [key, id_params]);
 
   return { data, isLoading, error, fetchData };
 }

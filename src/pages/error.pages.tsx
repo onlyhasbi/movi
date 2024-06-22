@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
 import Oops from "../assets/oops.svg?react";
 import Error from "../layout/error.layout";
+import { Link } from "react-router-dom";
 
 const ErrorPage = () => {
   return (

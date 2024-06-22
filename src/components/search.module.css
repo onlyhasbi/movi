@@ -1,0 +1,22 @@
+.search_container {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.search {
+  height: 3rem;
+  width: 30rem;
+  background: transparent;
+  font-family: "Roboto", "sans-serif";
+  font-size: 1.4rem;
+  padding-top: 0.5rem;
+  border: 0;
+  outline: 0;
+  font-weight: 200;
+  letter-spacing: 0.1rem;
+}
+
+.search::placeholder {
+  color: white;
+}

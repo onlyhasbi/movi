@@ -69,12 +69,20 @@ a {
   text-overflow: ellipsis;
 }
 
+.loading {
+  display: block;
+  width: 5rem;
+  height: 5rem;
+  animation: spin 1s linear infinite;
+}
+
 .pulse {
   animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     background: #374151;
     opacity: 1;
   }

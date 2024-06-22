@@ -1,10 +1,15 @@
 /* eslint-disable react-refresh/only-export-components */
-import { useContext } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { AuthContext } from "../context/auth.context";
-import useSession from "../hooks/useSession";
-import styles from "./layout.module.css";
 import DoorExit from "../assets/icons/logout.svg?react";
+import useSession from "../hooks/useSession";
+import Search from "../components/search.component";
+import styles from "./layout.module.css";
+import { useContext } from "react";
+import {
+  Link,
+  useLocation,
+  useNavigate
+} from "react-router-dom";
+import { AuthContext } from "../context/auth.context";
 import { getRequest } from "../services";
 
 const Header = () => {
@@ -16,8 +21,8 @@ const Header = () => {
   const navigate = useNavigate();
   const currentPath = useLocation().pathname;
   const { setAuthModal } = useContext(AuthContext);
-
   const { isAuthenticated, removeSession } = useSession();
+  const isHomePage = currentPath == "/movies";
 
   const removeApiSession = async () =>
     await getRequest({
@@ -36,9 +41,12 @@ const Header = () => {
     <>
       <div className={styles.header}>
         <div className="container between">
-          <Link className={styles.header_title} to="/movies">
-            CINEMA
-          </Link>
+          <div className={styles.header_brand}>
+            <Link className={styles.header_title} to="/movies">
+              CINEMA
+            </Link>
+            <Search style={{ display: isHomePage ? "block" : "none" }} />
+          </div>
           <div className={styles.header_menu}>
             {navigationPath.map(({ path, label }) => {
               return (

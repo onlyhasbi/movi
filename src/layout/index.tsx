@@ -1,3 +1,6 @@
+import Header from "./header.layout";
+import Modal from "../components/modal.component";
+import useSession from "../hooks/useSession";
 import { useContext, useEffect } from "react";
 import {
   Outlet,
@@ -5,10 +8,7 @@ import {
   useLocation,
   useNavigate,
 } from "react-router-dom";
-import Modal from "../components/modal.component";
 import { AuthContext } from "../context/auth.context";
-import useSession from "../hooks/useSession";
-import Header from "./header.layout";
 
 const Layout = () => {
   const { authModal, setAuthModal } = useContext(AuthContext);

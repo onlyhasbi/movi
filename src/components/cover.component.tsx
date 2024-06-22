@@ -1,19 +1,19 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { CircularProgressbar } from "react-circular-progressbar";
-import "react-circular-progressbar/dist/styles.css";
 import { getImage } from "../services/service.config";
 import { MovieDetail } from "../types";
 import { calculateUserScore } from "../utils/calculateUserScore";
 import { durationFormat, getYear, reformatDate } from "../utils/formatDate";
 import styles from "./cover.module.css";
 import Toggle from "./toggle.component";
+import "react-circular-progressbar/dist/styles.css";
 
 function Cover(props: MovieDetail) {
   const userScore = calculateUserScore(props.vote_average, props.vote_count);
 
   return (
     <div
-      style={{ backgroundImage: `url(${getImage(props.backdrop_path)})` }}
+      style={{ backgroundImage: `url(${getImage(props.backdrop_path)})`}}
       className={styles.cover_container}
     >
       <div className={`container ${styles.cover_items}`}>

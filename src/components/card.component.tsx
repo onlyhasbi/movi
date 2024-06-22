@@ -1,10 +1,9 @@
+import Toggle from "./toggle.component";
 import { useNavigate, useNavigation } from "react-router-dom";
-
 import { getImage } from "../services/service.config";
 import { Movie } from "../types";
 import { getYear } from "../utils/formatDate";
 import styles from "./card.module.css";
-import Toggle from "./toggle.component";
 
 type Props = { movie: Movie };
 

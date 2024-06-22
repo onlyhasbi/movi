@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
 import NotFound from "../assets/404.svg?react";
 import Error from "../layout/error.layout";
+import { Link } from "react-router-dom";
 
 const NotFoundPage = () => {
   return (

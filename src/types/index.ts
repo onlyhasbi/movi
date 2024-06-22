@@ -1,5 +1,3 @@
-export type Endpoint = "auth" | "now_playing" | "top_rated";
-
 export type AuthResponse = {
   success: boolean;
   guest_session_id: string;
@@ -59,5 +57,6 @@ export type TopRatedResponse = {
 };
 
 export type RecommendationsResponse = TopRatedResponse;
+export type SearchResponse = TopRatedResponse;
 
 export type MovieStore = Movie;

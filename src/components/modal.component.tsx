@@ -1,9 +1,9 @@
-import { useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 import styles from "./modal.module.css";
 import useFetch from "../hooks/useFetch";
-import { AuthResponse } from "../types";
 import useSession from "../hooks/useSession";
+import { useEffect, useRef } from "react";
+import { AuthResponse } from "../types";
 import { useNavigate } from "react-router-dom";
 
 type Props = {

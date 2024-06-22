@@ -5,6 +5,12 @@
   height: 100px;
 }
 
+.header_brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .header_title {
   font-size: 4.8rem;
   font-weight: 900;
@@ -25,20 +31,4 @@
   font-weight: 400;
   line-height: 2.3rem;
   cursor: pointer;
-}
-
-.loading {
-  display: block;
-  width: 5rem;
-  height: 5rem;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }

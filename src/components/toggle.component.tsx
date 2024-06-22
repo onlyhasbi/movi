@@ -3,10 +3,10 @@ import FillWatchlist from "../assets/icons/filled-watchlist.svg?react";
 import OutlineFavorite from "../assets/icons/outline-favorite.svg?react";
 import OutlineWatchlist from "../assets/icons/outline-watchlist.svg?react";
 import useSession from "../hooks/useSession";
+import styles from "./card.module.css";
 import { useLocation } from "react-router-dom";
 import { useMovieStore } from "../store";
 import { Movie } from "../types";
-import styles from "./card.module.css";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 

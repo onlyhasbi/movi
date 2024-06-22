@@ -7,12 +7,12 @@ const endpoint = (id_params?: string) => {
     top_rated: "/movie/top_rated?language=en-US&page=1",
     detail: `/movie/${id_params}`,
     recommendations: `/movie/${id_params}/recommendations`,
-    search: `/search/movie?${id_params}`,
+    search: `/search/movie?query=${id_params}&include_adult=false&language=en-US&page=1`,
     logout: "/authentication/session",
   };
 };
 
-type Endpoint = keyof ReturnType<typeof endpoint>;
+export type Endpoint = keyof ReturnType<typeof endpoint>;
 type PropRequest = {
   key: Endpoint;
   id_params?: string;
