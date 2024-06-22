@@ -1,30 +1,46 @@
-# React + TypeScript + Vite
+# Movie
+A public TMDb movie website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## How to Run the Project:
+1. First, run `npm install`
+2. Then, run `npm run dev`
 
-Currently, two official plugins are available:
+## Features on the Web
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### User Authentication
+- [x] Users can log in and log out.
+- [x] Adding favorites and watchlist items requires login.
+- [x] When a non-authenticated user clicks on navigation menu or toggle icons for favorites/watchlist, a login popup will appear.
+- [x] Users can log out to delete their session.
+- [x] Display a loading text during login.
+- [x] Redirect users to the homepage upon logout if they are not on the watchlist or favorites page.
 
-## Expanding the ESLint configuration
+### Home Page
+- [x] Displays "Now Playing" movies.
+- [x] Showcases "Top Rated" movies.
+- [x] Users can add or remove movies from the watchlist.
+- [x] "Add to favorite" and "watchlist" buttons are visible on card hover.
+- [x] Login is required to modify the watchlist and favorite movies.
+- [x] Clicking on a card redirects to the movie details.
+- [x] Users can add or remove movies from their watchlist or favorites on the detail page.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Movie Details
+- [ ] Users can rate a movie.
+- [x] Displays movie title, release date, overview, and relevant information.
+- [x] Users can add or remove movies from the watchlist and mark them as favorites.
 
-- Configure the top-level `parserOptions` property like this:
+### Search Functionality
+- [x] Implements a search bar for dynamic title-based movie searches.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+### Watchlist
+- [x] Users can remove movies from the watchlist.
+- [x] Users can navigate to movie details.
+- [x] Watchlist data is cached in local storage and updated when modified.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### Favorites
+- [x] Users can remove movies from favorites.
+- [x] Users can navigate to movie details.
+- [x] Favorite data is cached in local storage and updated when modified.
+
+### Responsive Design
+- [x] The application is properly viewable on mobile devices.
