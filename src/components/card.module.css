@@ -89,17 +89,16 @@
 @media screen and (max-width: 425px) {
   .movie_card {
     min-width: 15rem;
-  }
-
-  .movie_card {
-    height: 25.5rem;
+    height: 27.5rem;
   }
 
   .card_item {
-    height: 18.9rem;
+    height: 20.9rem !important;
+    overflow: hidden !important;
   }
 
   .card_poster {
-    min-height: 18.9rem;
+    min-height: 20.9rem !important;
+    
   }
 }
