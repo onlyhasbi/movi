@@ -50,12 +50,12 @@ const Modal = ({ isOpen, onClose }: Props) => {
   return ReactDOM.createPortal(
     <div className={styles.modal_overlay}>
       <div className={styles.modal_content} ref={modalRef}>
-        <img
-          className={styles.logo}
-          src="./tmdb-logo.png"
-          alt="tmdb-logo"
-        />
-        <button onClick={fetchData} className={styles.login_button}>
+        <img className={styles.logo} src="./tmdb-logo.png" alt="tmdb-logo" />
+        <button
+          onClick={fetchData}
+          className={styles.login_button}
+          disabled={isLoading}
+        >
           {isLoading ? "Authenticating..." : "Login with TMDB"}
         </button>
       </div>
