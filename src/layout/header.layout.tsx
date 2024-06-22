@@ -37,36 +37,39 @@ const Header = () => {
     <>
       <div className={styles.header}>
         <div className="container between">
-          <div className={styles.header_brand}>
-            <Link className={styles.header_title} to="/movies">
-              CINEMA
-            </Link>
+          <Link className={styles.header_title} to="/movies">
+            CINEMA
+          </Link>
+          <div
+            style={{ justifyContent: isHomePage ? "space-between" : "end" }}
+            className={styles.header_right}
+          >
             <Search isVisible={isHomePage} />
-          </div>
-          <div className={styles.header_menu}>
-            {navigationPath.map(({ path, label }) => {
-              return (
-                <span
-                  key={path}
-                  className={`${styles.header_menu__item} ${
-                    currentPath == path ? "active" : ""
-                  }`}
-                  onClick={() => {
-                    if (isAuthenticated) {
-                      navigate(path);
-                    } else {
-                      setAuthModal(true);
-                    }
-                  }}
-                >
-                  {label}
-                </span>
-              );
-            })}
-            <Logout
-              isAuthenticated={Boolean(isAuthenticated)}
-              onLogout={handleLogout}
-            />
+            <div className={styles.header_menu}>
+              {navigationPath.map(({ path, label }) => {
+                return (
+                  <span
+                    key={path}
+                    className={`${styles.header_menu__item} ${
+                      currentPath == path ? "active" : ""
+                    }`}
+                    onClick={() => {
+                      if (isAuthenticated) {
+                        navigate(path);
+                      } else {
+                        setAuthModal(true);
+                      }
+                    }}
+                  >
+                    {label}
+                  </span>
+                );
+              })}
+              <Logout
+                isAuthenticated={Boolean(isAuthenticated)}
+                onLogout={handleLogout}
+              />
+            </div>
           </div>
         </div>
       </div>

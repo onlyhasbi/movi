@@ -5,19 +5,23 @@
   height: 100px;
 }
 
-.header_brand {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-
 .header_title {
   font-size: 4.8rem;
   font-weight: 900;
   line-height: 7.2rem;
   letter-spacing: 0.35em;
   color: #fff;
+}
+
+.header_search {
+  margin-right: auto;
+}
+
+.header_right {
+  margin-left: 1rem;
+  display: flex;
+  align-items: center;
+  width: 100%;
 }
 
 @media only screen and (max-width: 375px) {
@@ -35,7 +39,6 @@
     flex-direction: column;
   }
 }
-
 
 .header_menu {
   display: flex;

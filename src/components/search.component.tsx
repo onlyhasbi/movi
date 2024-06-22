@@ -3,7 +3,11 @@ import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import SearchIcon from "../assets/icons/search.svg?react";
 import styles from "./search.module.css";
 
-const Search = ({ isVisible }: { isVisible: boolean }) => {
+const Search = ({
+  isVisible,
+}: {
+  isVisible: boolean;
+}) => {
   const [, setSearchParams] = useSearchParams();
   const [debouncedSearch, setDebouncedSearch] = useState("");
   const navigate = useNavigate();
