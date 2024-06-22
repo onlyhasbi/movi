@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { Navigate, createBrowserRouter } from "react-router-dom";
 import Layout from "../layout";
 import DetailPage from "../pages/detail.pages";
 import ErrorPage from "../pages/error.pages";
@@ -14,6 +14,10 @@ export const router = createBrowserRouter([
     element: <Layout />,
     errorElement: <ErrorPage />,
     children: [
+      {
+        index: true,
+        element: <Navigate to="/movies" replace />,
+      },
       {
         path: "movies",
         loader: async () => {

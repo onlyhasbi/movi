@@ -10,7 +10,7 @@ const Search = ({ isVisible }: { isVisible: boolean }) => {
   const delay = 650;
   useEffect(() => {
     const handler = setTimeout(() => {
-      setSearchParams({ search: debouncedSearch });
+      debouncedSearch && setSearchParams({ search: debouncedSearch });
     }, delay);
 
     return () => {

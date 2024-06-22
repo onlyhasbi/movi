@@ -15,6 +15,11 @@
   font-weight: 200;
   letter-spacing: 0.1rem;
 }
+@media only screen and (max-width: 375px) {
+  .search {
+    width: auto;
+  }
+}
 
 .search::placeholder {
   color: white;
