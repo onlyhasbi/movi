@@ -85,3 +85,21 @@
   width: 1.6rem;
   cursor: pointer;
 }
+
+@media screen and (max-width: 425px) {
+  .movie_card {
+    min-width: 15rem;
+  }
+
+  .movie_card {
+    height: 25.5rem;
+  }
+
+  .card_item {
+    height: 18.9rem;
+  }
+
+  .card_poster {
+    min-height: 18.9rem;
+  }
+}

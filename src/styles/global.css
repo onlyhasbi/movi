@@ -101,7 +101,7 @@ a {
   }
 }
 
-@media only screen and (max-width: 375px) {
+@media screen and (max-width: 425px) {
   .container {
     width: 100%;
     padding: 0 2.3rem;
@@ -120,5 +120,10 @@ a {
   .loading {
     width: 3rem;
     height: 3rem;
+  }
+
+  .nomovie,
+  .errorpage {
+    width: 30rem !important;
   }
 }

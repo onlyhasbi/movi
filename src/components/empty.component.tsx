@@ -23,6 +23,7 @@ const Empty = ({ title, variant = "info" }: Props) => {
         >
           <NoMovie
             style={{ width: "50rem", marginBottom: "2rem" }}
+            className="nomovie"
           />
           <p style={style}>Movie Not Found</p>
         </div>

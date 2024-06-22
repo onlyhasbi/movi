@@ -3,8 +3,8 @@ import styles from "./modal.module.css";
 import useFetch from "../hooks/useFetch";
 import useSession from "../hooks/useSession";
 import { useEffect, useRef } from "react";
-import { AuthResponse } from "../types";
 import { useNavigate } from "react-router-dom";
+import { AuthResponse } from "../types";
 
 type Props = {
   isOpen: boolean;

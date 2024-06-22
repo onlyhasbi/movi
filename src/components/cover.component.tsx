@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { CircularProgressbar } from "react-circular-progressbar";
-import { getImage } from "../services/service.config";
 import { MovieDetail } from "../types";
+import { getImage } from "../services/service.config";
 import { calculateUserScore } from "../utils/calculateUserScore";
 import { durationFormat, getYear, reformatDate } from "../utils/formatDate";
 import styles from "./cover.module.css";
