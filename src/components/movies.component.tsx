@@ -8,6 +8,7 @@ type Props = {
   fontSize: "lg" | "md";
   title: string;
   style?: React.CSSProperties;
+  empty?: React.ReactNode;
   rows?: boolean;
   scrollable?: boolean;
   className?: string;
@@ -22,11 +23,14 @@ const Movie = ({
   data,
   fontSize,
   title,
+  empty,
   scrollable = false,
   rows = false,
   style,
   className,
 }: Props) => {
+  const isEmpty = data.length == 0;
+
   const renderMovies = (movies: Array<MovieType>) =>
     movies.map((movie) => <Card movie={movie} key={movie.id} />);
 
@@ -43,7 +47,7 @@ const Movie = ({
       <h3 className={`${styles.movie_label} ${titleStyle[fontSize]}`}>
         {title}
       </h3>
-      {content}
+      {isEmpty ? empty : content}
     </div>
   );
 };

@@ -54,7 +54,6 @@ const Modal = ({ isOpen, onClose }: Props) => {
           className={styles.logo}
           src="./tmdb-logo.png"
           alt="tmdb-logo"
-          loading="lazy"
         />
         <button onClick={fetchData} className={styles.login_button}>
           {isLoading ? "Authenticating..." : "Login with TMDB"}

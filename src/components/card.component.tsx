@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useNavigation } from "react-router-dom";
 
 import { getImage } from "../services/service.config";
 import { Movie } from "../types";
@@ -10,11 +10,13 @@ type Props = { movie: Movie };
 
 const Card = ({ movie }: Props) => {
   const navigate = useNavigate();
+  const isLoading = useNavigation().state == "loading";
 
   return (
     <div className={styles.movie_card} key={movie.id}>
-      <div className={styles.card_item}>
+      <div className={`${styles.card_item} ${isLoading ? "pulse" : ""}`}>
         <img
+          style={{ display: isLoading ? "hidden" : "block" }}
           className={styles.card_poster}
           src={getImage(movie.poster_path)}
           alt={`image-${movie.id}`}

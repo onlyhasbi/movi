@@ -20,8 +20,8 @@ function Cover(props: MovieDetail) {
         <img
           className={styles.cover_photo}
           src={getImage(props.poster_path)}
-          loading="lazy"
           alt={`image-${props.id}`}
+          loading="lazy"
         />
         <div className={styles.cover_info}>
           <h3 className={styles.cover_title}>

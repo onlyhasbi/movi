@@ -10,7 +10,7 @@
 }
 
 .card_item {
-  background: #e11d48;
+  background: #374151;
   height: 28.9rem;
   font-size: 3rem;
   font-weight: 600;
@@ -42,6 +42,7 @@
   display: block;
   max-width: 100%;
   height: auto;
+  min-height: 28.9rem;
 }
 
 .footer_card {
