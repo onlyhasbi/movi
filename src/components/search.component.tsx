@@ -4,8 +4,8 @@ import SearchIcon from "../assets/icons/search.svg?react";
 import styles from "./search.module.css";
 
 const Search = ({ isVisible }: { isVisible: boolean }) => {
-  const [debouncedSearch, setDebouncedSearch] = useState("");
   const [, setSearchParams] = useSearchParams();
+  const [debouncedSearch, setDebouncedSearch] = useState("");
 
   const delay = 650;
   useEffect(() => {

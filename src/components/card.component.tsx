@@ -14,37 +14,38 @@ const Card = ({ movie }: Props) => {
 
   return (
     <div className={styles.movie_card} key={movie.id}>
-      <div className={`${styles.card_item} ${isLoading ? "pulse" : ""}`}>
-        {movie?.poster_path ? (
-          <img
-            style={{ display: isLoading ? "hidden" : "block" }}
-            className={styles.card_poster}
-            src={getImage(movie.poster_path)}
-            alt={`image-${movie.id}`}
-            loading="lazy"
-          />
-        ) : (
-          <div className={styles.card_noimage}>
-            <ImageOff style={{ width: "5rem", height: "5rem" }} />
-            <p>No Image</p>
-          </div>
-        )}
-        <span className={styles.card_icons}>
-          <Toggle movie={movie} />
+      <span className={styles.card_icons}>
+        <Toggle movie={movie} />
+      </span>
+      <div onClick={() => navigate(`/movies/${movie.id}`)}>
+        <div className={`${styles.card_item} ${isLoading ? "pulse" : ""}`}>
+          {movie?.poster_path ? (
+            <img
+              style={{ display: isLoading ? "hidden" : "block" }}
+              className={styles.card_poster}
+              src={getImage(movie.poster_path)}
+              alt={`image-${movie.id}`}
+              loading="lazy"
+            />
+          ) : (
+            <div className={styles.card_noimage}>
+              <ImageOff style={{ width: "5rem", height: "5rem" }} />
+              <p>No Image</p>
+            </div>
+          )}
+        </div>
+        <span className={styles.footer_card}>
+          <h3
+            className={`${styles.footer_card__title} truncate`}
+            title={movie.title}
+          >
+            {movie.title}
+          </h3>
+          <p className={styles.footer_card__year}>
+            {getYear(movie.release_date)}
+          </p>
         </span>
       </div>
-      <span className={styles.footer_card}>
-        <h3
-          className={`${styles.footer_card__title} truncate`}
-          onClick={() => navigate(`/movies/${movie.id}`)}
-          title={movie.title}
-        >
-          {movie.title}
-        </h3>
-        <p className={styles.footer_card__year}>
-          {getYear(movie.release_date)}
-        </p>
-      </span>
     </div>
   );
 };
