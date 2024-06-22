@@ -126,7 +126,11 @@
   }
 
   .cover_photo {
-    height: 25rem;
+    min-height: 20rem;
+    background-size: cover;
+    background-position: center;
+    background: #94a3b8;
+    height: auto;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
   }
 
