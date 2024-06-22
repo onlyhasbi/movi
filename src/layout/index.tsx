@@ -17,7 +17,8 @@ const Layout = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (["/watchlist", "/favorite"].includes(currentPath) && !isAuthenticated) {
+    const protectedPaths = ["/", "/watchlist", "/favorite"];
+    if (protectedPaths.includes(currentPath) && !isAuthenticated) {
       navigate("/movies");
     }
   }, [navigate, isAuthenticated, currentPath]);
