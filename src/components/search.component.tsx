@@ -1,16 +1,21 @@
 import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import SearchIcon from "../assets/icons/search.svg?react";
 import styles from "./search.module.css";
 
 const Search = ({ isVisible }: { isVisible: boolean }) => {
   const [, setSearchParams] = useSearchParams();
   const [debouncedSearch, setDebouncedSearch] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const delay = 650;
   useEffect(() => {
     const handler = setTimeout(() => {
-      debouncedSearch && setSearchParams({ search: debouncedSearch });
+      setSearchParams({ search: debouncedSearch });
+      if (!debouncedSearch) {
+        navigate(location.pathname, { replace: true });
+      }
     }, delay);
 
     return () => {
