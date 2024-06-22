@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, redirect } from "react-router-dom";
 import Layout from "../layout";
 import DetailPage from "../pages/detail.pages";
 import ErrorPage from "../pages/error.pages";
@@ -7,6 +7,7 @@ import HomePage from "../pages/home.pages";
 import NotFoundPage from "../pages/notfound.pages";
 import WatchlistPage from "../pages/watchlist.pages";
 import { getRequest } from "../services";
+import Protected from "../layout/protected.layout";
 
 export const router = createBrowserRouter([
   {
@@ -14,6 +15,12 @@ export const router = createBrowserRouter([
     element: <Layout />,
     errorElement: <ErrorPage />,
     children: [
+      {
+        index: true,
+        loader: () => {
+          return redirect("/movies");
+        },
+      },
       {
         path: "movies",
         loader: async () => {
@@ -46,11 +53,19 @@ export const router = createBrowserRouter([
       },
       {
         path: "favorite",
-        element: <FavoritePage />,
+        element: (
+          <Protected>
+            <FavoritePage />
+          </Protected>
+        ),
       },
       {
         path: "watchlist",
-        element: <WatchlistPage />,
+        element: (
+          <Protected>
+            <WatchlistPage />
+          </Protected>
+        ),
       },
       {
         path: "*",
