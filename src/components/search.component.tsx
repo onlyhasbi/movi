@@ -5,8 +5,10 @@ import SearchIcon from '../assets/icons/search.svg?react';
 import styles from './search.module.css';
 
 const Search = ({ isVisible }: { isVisible: boolean }) => {
-  const [, setSearchParams] = useSearchParams();
-  const [debouncedSearch, setDebouncedSearch] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [debouncedSearch, setDebouncedSearch] = useState(() =>
+    searchParams.get('search') ? (searchParams.get('search') as string) : ''
+  );
   const navigate = useNavigate();
   const location = useLocation();
 
