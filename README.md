@@ -16,7 +16,7 @@ A public TMDb movie website
 - [x] When a non-authenticated user clicks on navigation menu or toggle icons for favorites/watchlist, a login popup will appear.
 - [x] Users can log out to delete their session.
 - [x] Display a loading text during login.
-- [x] Redirect users to the homepage upon logout if they are not on the watchlist or favorites page.
+- [x] Redirect users to the homepage upon logout if they are on the watchlist or favorites page.
 
 ### Home Page
 
