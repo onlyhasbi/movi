@@ -1,4 +1,3 @@
-import { createBrowserRouter, redirect } from "react-router-dom";
 import Layout from "../layout";
 import DetailPage from "../pages/detail.pages";
 import ErrorPage from "../pages/error.pages";
@@ -6,8 +5,9 @@ import FavoritePage from "../pages/favorite.pages";
 import HomePage from "../pages/home.pages";
 import NotFoundPage from "../pages/notfound.pages";
 import WatchlistPage from "../pages/watchlist.pages";
-import { getRequest } from "../services";
 import Protected from "../layout/protected.layout";
+import { createBrowserRouter, redirect } from "react-router-dom";
+import { getRequest } from "../services";
 
 export const router = createBrowserRouter([
   {
