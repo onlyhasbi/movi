@@ -1,11 +1,11 @@
-import React from "react";
-import Card from "./card.component";
-import styles from "./movies.module.css";
-import { Movie as MovieType } from "../types";
+import React from 'react';
+import Card from './card.component';
+import styles from './movies.module.css';
+import { Movie as MovieType } from '../types';
 
 type Props = {
   data: Array<MovieType>;
-  fontSize: "lg" | "md";
+  fontSize: 'lg' | 'md';
   title: string;
   style?: React.CSSProperties;
   empty?: React.ReactNode;
@@ -16,7 +16,7 @@ type Props = {
 
 const titleStyle = {
   lg: styles.title_lg,
-  md: styles.title_md,
+  md: styles.title_md
 };
 
 const Movie = ({
@@ -27,7 +27,7 @@ const Movie = ({
   scrollable = false,
   rows = false,
   style,
-  className,
+  className
 }: Props) => {
   const isEmpty = data.length == 0;
 
@@ -37,16 +37,12 @@ const Movie = ({
   const content = scrollable ? (
     <div className={styles.scrollable_movie__list}>{renderMovies(data)}</div>
   ) : (
-    <div className={!rows ? styles.movie_list : styles.movie_grid}>
-      {renderMovies(data)}
-    </div>
+    <div className={!rows ? styles.movie_list : styles.movie_grid}>{renderMovies(data)}</div>
   );
 
   return (
     <div style={style} className={className}>
-      <h3 className={`${styles.movie_label} ${titleStyle[fontSize]}`}>
-        {title}
-      </h3>
+      <h3 className={`${styles.movie_label} ${titleStyle[fontSize]}`}>{title}</h3>
       {isEmpty ? empty : content}
     </div>
   );

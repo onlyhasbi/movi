@@ -1,30 +1,30 @@
-/* eslint-disable react-refresh/only-export-components */
-import DoorExit from "../assets/icons/logout.svg?react";
-import useSession from "../hooks/useSession";
-import Search from "../components/search.component";
-import styles from "./layout.module.css";
-import { useContext } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { AuthContext } from "../context/auth.context";
-import { getRequest } from "../services";
+// eslint-disable-next-line import/no-unresolved
+import DoorExit from '../assets/icons/logout.svg?react';
+import useSession from '../hooks/useSession';
+import Search from '../components/search.component';
+import styles from './layout.module.css';
+import { useContext } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/auth.context';
+import { getRequest } from '../services';
 
 const Header = () => {
   const navigationPath = [
-    { path: "/favorite", label: "Favorite" },
-    { path: "/watchlist", label: "Watchlist" },
+    { path: '/favorite', label: 'Favorite' },
+    { path: '/watchlist', label: 'Watchlist' }
   ];
 
   const navigate = useNavigate();
   const currentPath = useLocation().pathname;
   const { setAuthModal } = useContext(AuthContext);
   const { isAuthenticated, removeSession } = useSession();
-  const isHomePage = currentPath == "/movies";
+  const isHomePage = currentPath == '/movies';
 
   const removeApiSession = async () =>
     await getRequest({
-      key: "logout",
-      method: "DELETE",
-      body: JSON.stringify(isAuthenticated),
+      key: 'logout',
+      method: 'DELETE',
+      body: JSON.stringify(isAuthenticated)
     });
 
   const handleLogout = () => {
@@ -41,7 +41,7 @@ const Header = () => {
             CINEMA
           </Link>
           <div
-            style={{ justifyContent: isHomePage ? "space-between" : "end" }}
+            style={{ justifyContent: isHomePage ? 'space-between' : 'end' }}
             className={styles.header_right}
           >
             <Search isVisible={isHomePage} />
@@ -50,9 +50,7 @@ const Header = () => {
                 return (
                   <span
                     key={path}
-                    className={`${styles.header_menu__item} ${
-                      currentPath == path ? "active" : ""
-                    }`}
+                    className={`${styles.header_menu__item} ${currentPath == path ? 'active' : ''}`}
                     onClick={() => {
                       if (isAuthenticated) {
                         navigate(path);
@@ -65,10 +63,7 @@ const Header = () => {
                   </span>
                 );
               })}
-              <Logout
-                isAuthenticated={Boolean(isAuthenticated)}
-                onLogout={handleLogout}
-              />
+              <Logout isAuthenticated={Boolean(isAuthenticated)} onLogout={handleLogout} />
             </div>
           </div>
         </div>
@@ -79,12 +74,14 @@ const Header = () => {
 
 function Logout({
   isAuthenticated,
-  onLogout: handleLogout,
+  onLogout: handleLogout
 }: {
   isAuthenticated: boolean;
   onLogout: () => void;
 }) {
-  if (!isAuthenticated) return null;
+  if (!isAuthenticated) {
+    return null;
+  }
 
   return (
     <span className={styles.header_menu__item} onClick={handleLogout}>

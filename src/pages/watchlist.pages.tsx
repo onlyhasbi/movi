@@ -1,7 +1,7 @@
-import Empty from "../components/empty.component";
-import Movie from "../components/movies.component";
-import { Content } from "../layout/content.layout";
-import { useMovieStore } from "../store";
+import Empty from '../components/empty.component';
+import Movie from '../components/movies.component';
+import { Content } from '../layout/content.layout';
+import { useMovieStore } from '../store';
 
 const WatchlistPage = () => {
   const watchlist = useMovieStore((state) => state.watchlist);
@@ -12,7 +12,7 @@ const WatchlistPage = () => {
         data={watchlist}
         title="Your Watchlist"
         empty={<Empty title="watchlist" />}
-        style={{ display: "flex", flexDirection: "column", gap: "3rem" }}
+        style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}
         fontSize="lg"
         rows
       />

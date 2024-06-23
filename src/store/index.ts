@@ -1,6 +1,6 @@
-import { create } from "zustand";
-import { persist } from "zustand/middleware";
-import { MovieStore } from "../types";
+import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
+import { MovieStore } from '../types';
 
 export type StateMovie = {
   watchlist: Array<MovieStore>;
@@ -12,10 +12,7 @@ export type ActionMovie = {
   toggleFavorite: (movie: MovieStore) => void;
 };
 
-const toggleMovieInList = (
-  movies: Array<MovieStore>,
-  movie: MovieStore
-): Array<MovieStore> => {
+const toggleMovieInList = (movies: Array<MovieStore>, movie: MovieStore): Array<MovieStore> => {
   return movies.find((m) => m.id === movie.id)
     ? movies.filter((m) => m.id !== movie.id)
     : [...movies, movie];
@@ -28,15 +25,15 @@ export const useMovieStore = create<StateMovie & ActionMovie>()(
       favorites: [],
       toggleWatchlist: (movie) =>
         set({
-          watchlist: toggleMovieInList(get().watchlist, movie),
+          watchlist: toggleMovieInList(get().watchlist, movie)
         }),
       toggleFavorite: (movie) =>
         set({
-          favorites: toggleMovieInList(get().favorites, movie),
-        }),
+          favorites: toggleMovieInList(get().favorites, movie)
+        })
     }),
     {
-      name: "movie_store",
+      name: 'movie_store'
     }
   )
 );

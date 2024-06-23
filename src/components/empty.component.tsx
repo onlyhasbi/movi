@@ -1,30 +1,28 @@
-import NoMovie from "../assets/no-movie.svg?react";
+// eslint-disable-next-line import/no-unresolved
+import NoMovie from '../assets/no-movie.svg?react';
 
 type Props = {
   title?: string;
-  variant?: "info" | "notfound";
+  variant?: 'info' | 'notfound';
 };
 
-const Empty = ({ title, variant = "info" }: Props) => {
-  const style = { fontSize: "1.6rem", color: "#475569" };
+const Empty = ({ title, variant = 'info' }: Props) => {
+  const style = { fontSize: '1.6rem', color: '#475569' };
 
-  if (variant == "notfound") {
+  if (variant == 'notfound') {
     return (
       <div className="container">
         <div
           style={{
-            display: "flex",
-            justifyContent: "center",
-            flexDirection: "column",
-            alignItems: "center",
-            gap: "1rem",
-            marginTop: "10rem",
+            display: 'flex',
+            justifyContent: 'center',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '1rem',
+            marginTop: '10rem'
           }}
         >
-          <NoMovie
-            style={{ width: "50rem", marginBottom: "2rem" }}
-            className="nomovie"
-          />
+          <NoMovie style={{ width: '50rem', marginBottom: '2rem' }} className="nomovie" />
           <p style={style}>Movie Not Found</p>
         </div>
       </div>

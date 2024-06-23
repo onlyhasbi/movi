@@ -1,16 +1,11 @@
-import Movie from "../components/movies.component";
-import useFetch from "../hooks/useFetch";
-import Loading from "../components/loading.component";
-import { useLoaderData, useSearchParams } from "react-router-dom";
-import { Content } from "../layout/content.layout";
-import {
-  Movie as MovieType,
-  NowPlayingResponse,
-  SearchResponse,
-  TopRatedResponse,
-} from "../types";
-import { useEffect } from "react";
-import Empty from "../components/empty.component";
+import Movie from '../components/movies.component';
+import useFetch from '../hooks/useFetch';
+import Loading from '../components/loading.component';
+import { useLoaderData, useSearchParams } from 'react-router-dom';
+import { Content } from '../layout/content.layout';
+import { Movie as MovieType, NowPlayingResponse, SearchResponse, TopRatedResponse } from '../types';
+import { useEffect } from 'react';
+import Empty from '../components/empty.component';
 
 type HomeLoaderResponse = {
   nowPlaying: NowPlayingResponse;
@@ -20,18 +15,17 @@ type HomeLoaderResponse = {
 const HomePage = () => {
   const { nowPlaying, topRated } = useLoaderData() as HomeLoaderResponse;
   const [params] = useSearchParams();
-  const search = params.get("search");
+  const search = params.get('search');
 
-  const limit = (limitCount: number, data: Array<MovieType>) =>
-    data.slice(0, limitCount);
+  const limit = (limitCount: number, data: Array<MovieType>) => data.slice(0, limitCount);
 
   const {
     data: searchData,
     isLoading,
-    fetchData,
+    fetchData
   } = useFetch<SearchResponse>({
-    key: "search",
-    id_params: search || "",
+    key: 'search',
+    idParams: search || ''
   });
 
   useEffect(() => {
@@ -45,10 +39,10 @@ const HomePage = () => {
     return (
       <div
         style={{
-          width: "100%",
-          marginTop: "30rem",
-          display: "flex",
-          justifyContent: "center",
+          width: '100%',
+          marginTop: '30rem',
+          display: 'flex',
+          justifyContent: 'center'
         }}
       >
         <Loading />
@@ -63,7 +57,7 @@ const HomePage = () => {
           <Movie
             data={limit(18, searchData?.results || [])}
             title=""
-            style={{ marginTop: "5rem" }}
+            style={{ marginTop: '5rem' }}
             fontSize="lg"
             rows
           />
@@ -78,16 +72,11 @@ const HomePage = () => {
 
   return (
     <Content>
-      <Movie
-        data={nowPlaying?.results || []}
-        title="Now Playing"
-        fontSize="lg"
-        scrollable
-      />
+      <Movie data={nowPlaying?.results || []} title="Now Playing" fontSize="lg" scrollable />
       <Movie
         data={limit(12, topRated?.results) || []}
         title="Top Rated"
-        style={{ marginTop: "5rem" }}
+        style={{ marginTop: '5rem' }}
         fontSize="lg"
         rows
       />

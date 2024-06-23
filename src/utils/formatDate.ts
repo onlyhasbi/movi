@@ -2,7 +2,7 @@ export const getYear = (date: string) =>
   date ? new Date(date).getFullYear() : new Date().getFullYear();
 
 export const reformatDate = (date: string) => {
-  const [year, month, day] = date.split("-");
+  const [year, month, day] = date.split('-');
   return `${month}/${day}/${year}`;
 };
 

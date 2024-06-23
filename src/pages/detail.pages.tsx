@@ -1,7 +1,7 @@
-import Movie from "../components/movies.component";
-import Cover from "../components/cover.component";
-import { useLoaderData } from "react-router-dom";
-import { MovieDetail, RecommendationsResponse } from "../types";
+import Movie from '../components/movies.component';
+import Cover from '../components/cover.component';
+import { useLoaderData } from 'react-router-dom';
+import { MovieDetail, RecommendationsResponse } from '../types';
 
 type DetailLoaderResponse = {
   movie: MovieDetail;
@@ -10,13 +10,13 @@ type DetailLoaderResponse = {
 
 const DetailPage = () => {
   const { movie, recommendations } = useLoaderData() as DetailLoaderResponse;
-  
+
   return (
     <>
-      <Cover {...movie}/>
+      <Cover {...movie} />
       <Movie
         data={recommendations?.results || []}
-        style={{ marginTop: "5rem", paddingBottom: "5rem" }}
+        style={{ marginTop: '5rem', paddingBottom: '5rem' }}
         className="container"
         title="Recommendations"
         fontSize="md"

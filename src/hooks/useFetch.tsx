@@ -1,21 +1,17 @@
-import { useCallback, useState } from "react";
-import { getRequest, type Endpoint } from "../services";
-import { UseFetchResult } from "../types";
+import { useCallback, useState } from 'react';
+import { getRequest, type Endpoint } from '../services';
+import { UseFetchResult } from '../types';
 
 type Props<T> = {
   key: Endpoint;
-  id_params?: string;
+  idParams?: string;
   callback?: {
     onSuccess?: (data: T) => void;
     onError?: (err: string) => void;
   };
 };
 
-function useFetch<T>({
-  key,
-  id_params,
-  callback,
-}: Props<T>): UseFetchResult<T> {
+function useFetch<T>({ key, idParams, callback }: Props<T>): UseFetchResult<T> {
   const [data, setData] = useState<T | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
@@ -24,7 +20,7 @@ function useFetch<T>({
     setIsLoading(true);
     setError(null);
 
-    getRequest({ key, id_params: id_params })
+    getRequest({ key, idParams: idParams })
       .then((response) => response.json())
       .then((data) => {
         callback?.onSuccess?.(data);
@@ -33,11 +29,11 @@ function useFetch<T>({
       })
       .catch((err) => {
         callback?.onError?.(err);
-        setError(err.message || "Something went wrong");
+        setError(err.message || 'Something went wrong');
         setIsLoading(false);
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [key, id_params]);
+  }, [key, idParams]);
 
   return { data, isLoading, error, fetchData };
 }

@@ -1,6 +1,6 @@
-import React from "react";
-import useSession from "../hooks/useSession";
-import { Navigate } from "react-router-dom";
+import React from 'react';
+import useSession from '../hooks/useSession';
+import { Navigate } from 'react-router-dom';
 
 type Props = {
   children: React.ReactNode;

@@ -63,7 +63,7 @@
 
 .cover_movie__info li:nth-child(2)::before,
 .cover_movie__info li:nth-child(3)::before {
-  content: "\00B7";
+  content: '\00B7';
   padding-right: 1.2rem;
 }
 

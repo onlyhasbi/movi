@@ -1,18 +1,17 @@
-import NotFound from "../assets/404.svg?react";
-import Error from "../layout/error.layout";
-import { Link } from "react-router-dom";
+// eslint-disable-next-line import/no-unresolved
+import NotFound from '../assets/404.svg?react';
+import Error from '../layout/error.layout';
+import { Link } from 'react-router-dom';
 
 const NotFoundPage = () => {
   return (
     <Error>
-      <div style={{ width: "50rem" }}>
+      <div style={{ width: '50rem' }}>
         <NotFound />
       </div>
-      <h1 style={{ fontSize: "4rem", color: "#e11d48" }}>Page Not Found</h1>
-      <p style={{ fontSize: "1.6rem", color: "#9ca3af" }}>
-        Ensure the URL path is correct.
-      </p>
-      <Link to="/movies" className="link" style={{ fontSize: "2rem" }}>
+      <h1 style={{ fontSize: '4rem', color: '#e11d48' }}>Page Not Found</h1>
+      <p style={{ fontSize: '1.6rem', color: '#9ca3af' }}>Ensure the URL path is correct.</p>
+      <Link to="/movies" className="link" style={{ fontSize: '2rem' }}>
         Go to Homepage
       </Link>
     </Error>

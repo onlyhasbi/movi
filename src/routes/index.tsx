@@ -1,76 +1,72 @@
-import Layout from "../layout";
-import DetailPage from "../pages/detail.pages";
-import ErrorPage from "../pages/error.pages";
-import FavoritePage from "../pages/favorite.pages";
-import HomePage from "../pages/home.pages";
-import NotFoundPage from "../pages/notfound.pages";
-import WatchlistPage from "../pages/watchlist.pages";
-import Protected from "../layout/protected.layout";
-import { createBrowserRouter, redirect } from "react-router-dom";
-import { getRequest } from "../services";
+import Layout from '../layout';
+import DetailPage from '../pages/detail.pages';
+import ErrorPage from '../pages/error.pages';
+import FavoritePage from '../pages/favorite.pages';
+import HomePage from '../pages/home.pages';
+import NotFoundPage from '../pages/notfound.pages';
+import WatchlistPage from '../pages/watchlist.pages';
+import Protected from '../layout/protected.layout';
+import { createBrowserRouter, redirect } from 'react-router-dom';
+import { getRequest } from '../services';
 
 export const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <Layout />,
     errorElement: <ErrorPage />,
     children: [
       {
         index: true,
         loader: () => {
-          return redirect("/movies");
-        },
+          return redirect('/movies');
+        }
       },
       {
-        path: "movies",
+        path: 'movies',
         loader: async () => {
           return {
-            nowPlaying: await getRequest({ key: "now_playing" }).then((res) =>
-              res.json()
-            ),
-            topRated: await getRequest({ key: "top_rated" }).then((res) =>
-              res.json()
-            ),
+            nowPlaying: await getRequest({ key: 'now_playing' }).then((res) => res.json()),
+            topRated: await getRequest({ key: 'top_rated' }).then((res) => res.json())
           };
         },
-        element: <HomePage />,
+        element: <HomePage />
       },
       {
-        path: "movies/:movieId",
+        path: 'movies/:movieId',
         loader: async ({ params }) => {
           return {
             recommendations: await getRequest({
-              key: "recommendations",
-              id_params: params.movieId,
+              key: 'recommendations',
+              idParams: params.movieId
             }).then((res) => res.json()),
             movie: await getRequest({
-              key: "detail",
-              id_params: params.movieId,
-            }).then((res) => res.json()),
+              key: 'detail',
+              idParams: params.movieId
+            }).then((res) => res.json())
           };
         },
-        element: <DetailPage />,
+        element: <DetailPage />
       },
       {
-        path: "favorite",
+        path: 'favorite',
         element: (
           <Protected>
             <FavoritePage />
           </Protected>
-        ),
+        )
       },
       {
-        path: "watchlist",
+        path: 'watchlist',
         element: (
           <Protected>
             <WatchlistPage />
           </Protected>
-        ),
+        )
       },
       {
-        path: "*",
-        element: <NotFoundPage />,
-      },
-    ],
-  },
+        path: '*',
+        element: <NotFoundPage />
+      }
+    ]
+  }
 ]);

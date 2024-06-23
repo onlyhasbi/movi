@@ -1,4 +1,4 @@
-import Cookies from "js-cookie";
+import Cookies from 'js-cookie';
 
 type SetSessionProps = {
   sessionData: string;
@@ -6,7 +6,7 @@ type SetSessionProps = {
 };
 
 const useSession = () => {
-  const SESSION = "session";
+  const SESSION = 'session';
 
   const isAuthenticated = Cookies.get(SESSION);
 
