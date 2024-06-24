@@ -12,7 +12,8 @@
     "check": "npm run check:lint && npm run check:ts",
     "format:lint": "eslint --fix ./src/ --ext .ts,.tsx",
     "format:prettier": "prettier --config .prettierrc ./src/ --write",
-    "formatter": "npm run format:lint && npm run format:prettier"
+    "formatter": "npm run format:lint && npm run format:prettier",
+    "prepare": "husky"
   },
   "dependencies": {
     "@types/js-cookie": "^3.0.6",
@@ -44,8 +45,9 @@
     "vite": "^5.2.0"
   },
   "lint-staged": {
-    ".src/**/*.{js,jsx,ts,tsx}": [
-      "npm run formatter"
+    "*.{js,jsx,ts,tsx,css,scss}": [
+      "npm run formatter",
+      "git add ."
     ]
   },
   "husky": {
