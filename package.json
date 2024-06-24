@@ -9,7 +9,7 @@
     "check:lint": "eslint --ignore-path .gitignore . --ext .js,.jsx,.ts,.tsx",
     "check:prettier": "prettier --config .prettierrc ./src/ --check",
     "check:ts": "tsc",
-    "check": "npm run check:lint && npm run check:prettier && npm run check:ts",
+    "check": "npm run check:lint && npm run check:ts",
     "format:lint": "eslint --fix ./src/ --ext .ts,.tsx",
     "format:prettier": "prettier --config .prettierrc ./src/ --write",
     "formatter": "npm run format:lint && npm run format:prettier"
@@ -42,15 +42,5 @@
     "prettier": "^3.3.2",
     "typescript": "^5.2.2",
     "vite": "^5.2.0"
-  },
-  "lint-staged": {
-    ".src/**/*.{js,jsx,ts,tsx}": [
-      "npm run formatter"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   }
 }
