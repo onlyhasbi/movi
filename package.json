@@ -11,7 +11,7 @@
     "check:ts": "tsc",
     "check": "npm run check:lint && npm run check:prettier && npm run check:ts",
     "format:lint": "eslint --fix ./src/ --ext .ts,.tsx",
-    "format:prettier": "prettier --config .prettierrc './src/' --write",
+    "format:prettier": "prettier --config .prettierrc ./src/ --write",
     "formatter": "npm run format:lint && npm run format:prettier"
   },
   "dependencies": {
