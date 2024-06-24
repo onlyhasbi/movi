@@ -1,3 +1,2 @@
-npm run check
-npm run formatter
+npx lint-staged
 git add .

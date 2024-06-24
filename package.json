@@ -42,5 +42,15 @@
     "prettier": "^3.3.2",
     "typescript": "^5.2.2",
     "vite": "^5.2.0"
+  },
+  "lint-staged": {
+    ".src/**/*.{js,jsx,ts,tsx}": [
+      "npm run formatter"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
